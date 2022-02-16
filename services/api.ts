@@ -56,11 +56,7 @@ export function setupAPIClient( ctx = undefined ) {
                 failedRequestQueue.forEach(request => request.reject(err));
                 failedRequestQueue = [];
   
-                if (process.browser) {
-                  signOut();
-                } else {
-                  return Promise.reject(new AuthTokenError())
-                }
+                signOut();
               }).finally(() => {
                 isRefresh = false;
               });
